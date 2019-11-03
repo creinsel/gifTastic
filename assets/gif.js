@@ -1,9 +1,7 @@
-// gif=$(this).attr("data-name")
+var gifSelect;
 var cartArr=["Spongebob", "Family Guy", "Rugrats", "Teen Titans",  "American Dad"]
-var userInput=$("#input-form").val();
-var gif="grinch"
-var gifAPI="3eDaBXUjJfvyaSnSZueu1CqEJC5iZLdQ";
-var queryURL="http://api.giphy.com/v1/gifs/search?q="+gif+ "&api_key="+gifAPI+ "&limit=10";
+var userInput=$("#input-form").val().trim();
+
 
 //to create buttons already in array
 function renderButtons(){
@@ -12,7 +10,9 @@ function renderButtons(){
 
   $.each(cartArr, function(i, val){
 
-    var buttons= $("<button>"+ cartArr[i]+"</button>");
+    var buttons= $("<button class='btnClick'>"+ cartArr[i]+"</button>");
+
+    buttons.attr("data-name", cartArr[i])
 
     buttons.appendTo("#buttons");
   })
@@ -24,7 +24,7 @@ $("#input-btn").on("click", function(event){
 
   event.preventDefault();
 
-  userInput=$("#input-form").val();
+  userInput=$("#input-form").val().trim();
 
   console.log(userInput);
 
@@ -41,8 +41,16 @@ $("#input-btn").on("click", function(event){
 
 renderButtons();
 
+$("#buttons").on("click", ".btnClick", function(event){
 
+  var gifSelect= $(this).attr("data-name");
 
+  console.log(gifSelect);
+
+  $("#gifs").empty();
+
+  var gifAPI="3eDaBXUjJfvyaSnSZueu1CqEJC5iZLdQ";
+  var queryURL="http://api.giphy.com/v1/gifs/search?q="+gifSelect+ "&api_key="+gifAPI+ "&limit=10";
 //call
       $.ajax({
         url: queryURL,
@@ -89,6 +97,8 @@ renderButtons();
         
       }
     });
+
+  });
 
     //animate gifs
     $("#gifs").on("click", ".gif", function(event){
