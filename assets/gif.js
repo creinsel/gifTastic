@@ -41,6 +41,7 @@ $("#input-btn").on("click", function(event){
 
 renderButtons();
 
+//click gif button and gis appear
 $("#buttons").on("click", ".btnClick", function(event){
 
   var gifSelect= $(this).attr("data-name");
