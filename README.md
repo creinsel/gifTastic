@@ -17,4 +17,4 @@ Built With:
 * AJAX
 * GIPHY API
 
-[Deployed Here](https://creinsel.github.io/gifTastic/)
+
