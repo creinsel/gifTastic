@@ -51,7 +51,7 @@ $("#buttons").on("click", ".btnClick", function(event){
   $("#gifs").empty();
 
   var gifAPI="3eDaBXUjJfvyaSnSZueu1CqEJC5iZLdQ";
-  var queryURL="http://api.giphy.com/v1/gifs/search?q="+gifSelect+ "&api_key="+gifAPI+ "&limit=10";
+  var queryURL="https://api.giphy.com/v1/gifs/search?q="+gifSelect+ "&api_key="+gifAPI+ "&limit=10";
 //call
       $.ajax({
         url: queryURL,
